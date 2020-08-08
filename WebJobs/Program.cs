@@ -7,6 +7,7 @@ using System.Timers;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Timers;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging.Console;
 
 namespace WebJobs
 {
@@ -22,6 +23,8 @@ namespace WebJobs
             {
                 b.AddAzureStorageCoreServices();
                 b.AddExecutionContextBinding();
+                b.AddTimers();
+
             });
             var host = builder.Build();
             using (host)
