@@ -15,11 +15,8 @@ namespace WebJobs
         // Please set the following connection strings in app.config for this WebJob to run:
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
-        {
-            ScheduleStatus scheduleStatus = new ScheduleStatus();
-            TimerSchedule timerSchedule = null;
-            TimerInfo timerInfo = new TimerInfo(timerSchedule, scheduleStatus);
-            Functions.CheckPendingTables(timerInfo);
+        {           
+            Functions.CheckPendingTables();
         }
     }
 }

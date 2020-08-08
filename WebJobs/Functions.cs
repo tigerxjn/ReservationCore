@@ -13,7 +13,7 @@ namespace WebJobs
     {
         // This function will get triggered/executed when a new message is written 
         // on an Azure Queue called queue.
-        public static void CheckPendingTables([TimerTrigger("*/15 * * * * *")] TimerInfo timer)
+        public static void CheckPendingTables()
         {
             Console.WriteLine(DateTime.Now);
         }
