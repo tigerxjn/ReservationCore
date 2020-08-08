@@ -14,9 +14,9 @@ namespace WebJobs
     {
         // Please set the following connection strings in app.config for this WebJob to run:
         // AzureWebJobsDashboard and AzureWebJobsStorage
-        static void Main()
-        {           
-            Functions.CheckPendingTables();
+        static void Main(TimerInfo timerInfo)
+        {
+            Functions.CheckPendingTables(timerInfo);
         }
     }
 }
