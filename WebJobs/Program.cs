@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Timers;
+using Microsoft.Extensions.Hosting;
 
 namespace WebJobs
 {
@@ -14,9 +15,19 @@ namespace WebJobs
     {
         // Please set the following connection strings in app.config for this WebJob to run:
         // AzureWebJobsDashboard and AzureWebJobsStorage
-        static void Main(TimerInfo timerInfo)
+        static async Task Main()
         {
-            Functions.CheckPendingTables(timerInfo);
+            var builder = new HostBuilder();
+            builder.ConfigureWebJobs(b =>
+            {
+                b.AddAzureStorageCoreServices();
+                b.AddExecutionContextBinding();
+            });
+            var host = builder.Build();
+            using (host)
+            {
+                await host.RunAsync();
+            }
         }
     }
 }
