@@ -13,7 +13,7 @@ namespace WebJobs
     {
         public static void CheckPendingTables([TimerTrigger("*/15 * * * * *")] TimerInfo timer)
         {
-            Console.WriteLine(DateTime.Now);
+            Console.WriteLine(DateTime.Now + "some");
         }
     }
 }
